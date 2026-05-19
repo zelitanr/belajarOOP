@@ -36,9 +36,9 @@ class PaketAlam extends PaketLiburan {
 
     public function tampilData() {
         return "Tujuan: " . $this->getTujuan() . "<br>" .
-               "Harga Dasar: Rp " . $this->hargaDasar . "<br>" .
-               "Biaya Asuransi: Rp " . $this->biayaAsuransi . "<br>" .
-               "Total Biaya: Rp " . $this->hitungTotal();
+               "Harga : Rp. " . number_format($this->hargaDasar, 0, ',', '.') . "<br>" .
+               "Biaya Asuransi: Rp. " . number_format($this->biayaAsuransi, 0, ',', '.') . "<br>" .
+               "Total Biaya: Rp. " . number_format($this->hitungTotal(), 0, ',', '.');
     }
 }
 
@@ -47,7 +47,6 @@ class PaketMewah extends PaketLiburan {
 
     public function setLevel($angka) {
         if ($angka < 1 || $angka > 3) {
-            $this->levelMewah = 1;
             echo "Level mewah hanya tersedia 1, 2, atau 3";
         } else {
             $this->levelMewah = $angka;
@@ -66,7 +65,7 @@ class PaketMewah extends PaketLiburan {
 
     public function tampilData() {
         return "Tujuan: " . $this->getTujuan() . "<br>" .
-               "Harga Dasar: Rp " . $this->hargaDasar . "<br>" .
+               "Harga : Rp. " . number_format($this->hargaDasar, 0, ',', '.') . "<br>" .
                 "Level Mewah: " . $this->levelMewah . "<br>" .
                 "Fasilitas: " . $this->getFasilitas();
     }
@@ -77,7 +76,7 @@ $paket1 = new PaketAlam();
 $paket1->setTujuan("pasar bali");
 $paket1->setHargaDasar(2000000);
 $paket1->setAsuransi(300000);
-echo $paket1->tampilData() . "<br><br>";
+echo $paket1->tampilData() . "<br>";
 
 echo "<p>Paket Liburan Mewah</p>";
 $paket2 = new PaketMewah();
